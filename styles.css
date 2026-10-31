@@ -452,7 +452,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
   padding: clamp(72px, 8vw, 120px) var(--band);
   scroll-margin-top: 40px;
 }
-.dining__media { border-radius: 400px 400px 0 0; overflow: hidden; max-width: 560px; justify-self: center; width: 100%; }
+.dining__media { border-radius: 22px; overflow: hidden; max-width: 560px; justify-self: center; width: 100%; }
 .dining__media picture { display: block; }
 .dining__media img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
 .dining__text > p:not(.eyebrow) { margin: 24px 0 0; max-width: 460px; font-size: 15px; line-height: 1.8; color: var(--body); font-weight: 400; }
