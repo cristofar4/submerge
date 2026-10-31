@@ -205,17 +205,6 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
   opacity: .9;
 }
 
-.scroll-cue {
-  position: absolute; left: 50%; bottom: 34px; transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: 12px;
-  font-size: 11px; letter-spacing: .38em; text-transform: uppercase;
-}
-.scroll-cue i { width: 1px; height: 44px; background: rgba(255,255,255,.35); position: relative; overflow: hidden; }
-.scroll-cue i::after {
-  content: ""; position: absolute; left: 0; top: -40%; width: 1px; height: 40%;
-  background: var(--white); animation: cue 2.2s var(--ease) infinite;
-}
-@keyframes cue { to { top: 100%; } }
 
 /* ---------- booking ---------- */
 .booking-wrap {
