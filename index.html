@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SUBMERGE — A world beneath the waves</title>
+  <meta name="description" content="SUBMERGE is an underwater resort: suites, dining and diving set deep within a living reef.">
+  <meta name="theme-color" content="#06192a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/img/hero-poster.webp" type="image/webp">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <a href="#top" class="nav__logo" aria-label="Submerge home">SUBMERGE</a>
+    <nav class="nav__links" id="navLinks" aria-label="Primary">
+      <a href="#suites">Suites</a>
+      <a href="#experiences">Experiences</a>
+      <a href="#world">Our World</a>
+      <a href="#book" class="nav__mobile-cta">Reserve your stay</a>
+    </nav>
+    <a href="#book" class="btn btn--ghost nav__cta">Reserve your stay</a>
+    <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <main id="top">
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-label="Introduction">
+      <div class="hero__media">
+        <video class="hero__video" id="heroVideo" autoplay muted loop playsinline preload="auto"
+               poster="assets/img/hero-poster.jpg" aria-hidden="true">
+          <source src="assets/video/hero-960.mp4" type="video/mp4" media="(max-width: 760px)">
+          <source src="assets/video/hero.mp4" type="video/mp4">
+        </video>
+        <div class="hero__shade"></div>
+        <div class="hero__particles" aria-hidden="true"></div>
+      </div>
+
+      <div class="hero__content">
+        <h1 class="script hero__title">
+          <span class="reveal-line">A world beneath</span>
+          <span class="reveal-line reveal-line--indent">the waves.</span>
+        </h1>
+        <p class="hero__sub">An extraordinary escape below the surface.</p>
+        <a href="#suites" class="btn btn--ghost btn--lg">Discover the depths <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+
+      <!-- depth gauge -->
+      <div class="gauge" aria-hidden="true">
+        <div class="gauge__track">
+          <span class="gauge__marker" id="gaugeMarker"></span>
+        </div>
+        <ul class="gauge__labels">
+          <li>0 m</li><li>10 m</li><li>20 m</li><li>30 m</li><li>40 m</li>
+        </ul>
+        <span class="gauge__readout" id="gaugeReadout">0 m</span>
+      </div>
+
+      <a href="#suites" class="scroll-cue" aria-label="Scroll down">
+        <span>Scroll</span>
+        <i></i>
+      </a>
+    </section>
+
+    <!-- ============ BOOKING ============ -->
+    <section class="booking-wrap" id="book" aria-label="Check availability">
+      <form class="booking" id="bookingForm" novalidate>
+        <label class="booking__field">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="1.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>
+          <span class="booking__label">Arrival</span>
+          <input type="date" name="arrival" id="arrival" required>
+        </label>
+        <span class="booking__sep" aria-hidden="true"></span>
+        <label class="booking__field">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="1.5"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></svg>
+          <span class="booking__label">Departure</span>
+          <input type="date" name="departure" id="departure" required>
+        </label>
+        <span class="booking__sep" aria-hidden="true"></span>
+        <label class="booking__field">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c.8-3.6 3.6-5.6 7-5.6s6.2 2 7 5.6"/></svg>
+          <span class="booking__label">Guests</span>
+          <select name="guests" id="guests" required>
+            <option value="" selected disabled hidden>Guests</option>
+            <option value="1">1 guest</option>
+            <option value="2">2 guests</option>
+            <option value="3">3 guests</option>
+            <option value="4">4 guests</option>
+          </select>
+          <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5"/></svg>
+        </label>
+        <button type="submit" class="btn btn--copper">Check availability <span class="arrow" aria-hidden="true">→</span></button>
+        <p class="booking__msg" id="bookingMsg" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <!-- ============ SUITES ============ -->
+    <section class="window" id="suites">
+      <figure class="window__main reveal">
+        <picture>
+          <source srcset="assets/img/suite.webp" type="image/webp">
+          <img src="assets/img/suite.jpg" alt="Underwater suite with a curved panoramic window onto the reef as a manta ray glides past" loading="lazy" width="1672" height="941">
+        </picture>
+      </figure>
+
+      <div class="window__text">
+        <h2 class="script window__title reveal">The ocean is your window.</h2>
+        <p class="reveal">Wake to a living seascape. Our underwater suites place you at the heart of a vibrant blue world, where marine life drifts past and every moment feels extraordinary.</p>
+
+        <figure class="window__secondary reveal">
+          <picture>
+            <source srcset="assets/img/dining.webp" type="image/webp">
+            <img src="assets/img/dining.jpg" alt="Candlelit restaurant inside a glass tunnel beneath the sea" loading="lazy" width="1672" height="941">
+          </picture>
+          <figcaption class="caption">
+            <span>Dining beneath the surface</span><i></i><span>Exceptional at every depth</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCES ============ -->
+    <section class="deeper" id="experiences">
+      <div class="deeper__head">
+        <h2 class="script deeper__title reveal">Discover a deeper escape.</h2>
+        <p class="reveal">From private diving experiences to secluded dining, SUBMERGE invites you to explore a more extraordinary perspective on the world.</p>
+      </div>
+
+      <div class="deeper__grid">
+        <figure class="card reveal">
+          <div class="card__img">
+            <picture>
+              <source srcset="assets/img/dining.webp" type="image/webp">
+              <img src="assets/img/dining.jpg" alt="Restaurant tables set beneath arching glass with fish and a manta ray overhead" loading="lazy" width="1672" height="941" style="object-position: 30% 60%">
+            </picture>
+          </div>
+          <figcaption class="caption caption--light">
+            <span>Unforgettable dining</span><i></i><span>An ocean of flavour</span>
+          </figcaption>
+        </figure>
+
+        <figure class="card card--narrow reveal">
+          <div class="card__img">
+            <picture>
+              <source srcset="assets/img/diving.webp" type="image/webp">
+              <img src="assets/img/diving.jpg" alt="Scuba diver swimming through a coral canyon lit by sun rays" loading="lazy" width="1672" height="941" style="object-position: 35% 50%">
+            </picture>
+          </div>
+          <figcaption class="caption caption--light">
+            <span>Bespoke diving experiences</span><i></i><span>A closer connection</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="drift" id="world">
+      <video class="drift__video" autoplay muted loop playsinline preload="none" poster="assets/img/hero-poster.jpg" aria-hidden="true">
+        <source src="assets/video/hero-960.mp4" type="video/mp4">
+      </video>
+      <div class="drift__shade"></div>
+      <div class="drift__content">
+        <h2 class="script drift__title reveal">Let the world drift away.</h2>
+        <a href="#book" class="btn btn--ghost reveal">Reserve your stay <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span class="nav__logo">SUBMERGE</span>
+    <span>© <span id="year"></span> Submerge. All rights reserved.</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
