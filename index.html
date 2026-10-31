@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>SUBMERGE — A world beneath the waves</title>
   <meta name="description" content="SUBMERGE is an underwater resort: suites, dining and diving set deep within a living reef.">
   <meta name="theme-color" content="#06192a">
@@ -14,16 +14,18 @@
 </head>
 <body>
 
-  <!-- ============ NAV ============ -->
+  <!-- ============ NAV (floating pill) ============ -->
   <header class="nav" id="nav">
     <a href="#top" class="nav__logo" aria-label="Submerge home">SUBMERGE</a>
     <nav class="nav__links" id="navLinks" aria-label="Primary">
       <a href="#suites">Suites</a>
       <a href="#experiences">Experiences</a>
-      <a href="#world">Our World</a>
+      <a href="#dining">Dining</a>
+      <a href="#reef">Our World</a>
+      <a href="#contact">Contact</a>
       <a href="#book" class="nav__mobile-cta">Reserve your stay</a>
     </nav>
-    <a href="#book" class="btn btn--ghost nav__cta">Reserve your stay</a>
+    <a href="#book" class="btn btn--light nav__cta">Reserve your stay</a>
     <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span>
     </button>
@@ -59,10 +61,9 @@
         <ul class="gauge__labels">
           <li>0 m</li><li>10 m</li><li>20 m</li><li>30 m</li><li>40 m</li>
         </ul>
-        <span class="gauge__readout" id="gaugeReadout">0 m</span>
       </div>
 
-      <a href="#suites" class="scroll-cue" aria-label="Scroll down">
+      <a href="#book" class="scroll-cue" aria-label="Scroll down">
         <span>Scroll</span>
         <i></i>
       </a>
@@ -100,8 +101,8 @@
       </form>
     </section>
 
-    <!-- ============ SUITES ============ -->
-    <section class="window" id="suites">
+    <!-- ============ INTRO ============ -->
+    <section class="window" id="intro">
       <figure class="window__main reveal">
         <picture>
           <source srcset="assets/img/suite.webp" type="image/webp">
@@ -122,6 +123,90 @@
             <span>Dining beneath the surface</span><i></i><span>Exceptional at every depth</span>
           </figcaption>
         </figure>
+      </div>
+    </section>
+
+    <!-- facts -->
+    <section class="facts" aria-label="Submerge at a glance">
+      <dl class="facts__list">
+        <div><dt>18</dt><dd>Underwater suites &amp; villas</dd></div>
+        <div><dt>24<small>m</small></dt><dd>Below the surface at the deepest suite</dd></div>
+        <div><dt>270<small>°</small></dt><dd>Acrylic windows onto the reef</dd></div>
+        <div><dt>1</dt><dd>Private house reef, yours to explore</dd></div>
+      </dl>
+    </section>
+
+    <!-- ============ SUITES ============ -->
+    <section class="suites" id="suites">
+      <div class="section-head">
+        <p class="eyebrow">Suites &amp; villas</p>
+        <h2 class="script section-title reveal">Sleep among the reef.</h2>
+        <p class="section-lede reveal">Every room faces the open water. Choose how deep you go, how much space you want, and who you bring with you.</p>
+      </div>
+
+      <div class="suites__grid">
+        <article class="suite reveal">
+          <div class="suite__img">
+            <picture>
+              <source srcset="assets/img/suite-reef.webp" type="image/webp">
+              <img src="assets/img/suite-reef.jpg" alt="Reef Suite bedroom with a king bed facing a curved window onto the reef" loading="lazy" width="1000" height="740">
+            </picture>
+            <span class="suite__depth">18 m</span>
+          </div>
+          <div class="suite__body">
+            <h3>Reef Suite</h3>
+            <p>A king bed set before a curved window, with the coral garden close enough to count the fish.</p>
+            <ul class="suite__specs">
+              <li>72 m²</li><li>2 guests</li><li>King bed</li>
+            </ul>
+            <div class="suite__foot">
+              <span class="suite__price">From <strong>$2,400</strong> / night</span>
+              <a href="#book" class="link-arrow">Book <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="suite reveal">
+          <div class="suite__img">
+            <picture>
+              <source srcset="assets/img/suite-villa.webp" type="image/webp">
+              <img src="assets/img/suite-villa.jpg" alt="Glass-walled villa set into the reef wall, lit warmly from inside" loading="lazy" width="612" height="520">
+            </picture>
+            <span class="suite__depth">12 m</span>
+          </div>
+          <div class="suite__body">
+            <h3>Cliffside Villa</h3>
+            <p>Two levels carved into the reef wall, with a sunken lounge and light that changes through the day.</p>
+            <ul class="suite__specs">
+              <li>140 m²</li><li>Up to 4 guests</li><li>2 bedrooms</li>
+            </ul>
+            <div class="suite__foot">
+              <span class="suite__price">From <strong>$4,800</strong> / night</span>
+              <a href="#book" class="link-arrow">Book <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="suite reveal">
+          <div class="suite__img">
+            <picture>
+              <source srcset="assets/img/suite-manta.webp" type="image/webp">
+              <img src="assets/img/suite-manta.jpg" alt="Panoramic window looking out on a school of fish and a passing manta ray" loading="lazy" width="1032" height="640">
+            </picture>
+            <span class="suite__depth">24 m</span>
+          </div>
+          <div class="suite__body">
+            <h3>Manta Residence</h3>
+            <p>Our deepest residence, with a 270° window over the manta cleaning station and a private butler.</p>
+            <ul class="suite__specs">
+              <li>210 m²</li><li>Up to 4 guests</li><li>Butler service</li>
+            </ul>
+            <div class="suite__foot">
+              <span class="suite__price">From <strong>$7,900</strong> / night</span>
+              <a href="#book" class="link-arrow">Book <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -157,6 +242,237 @@
           </figcaption>
         </figure>
       </div>
+
+      <ul class="exp-list">
+        <li class="reveal">
+          <span class="exp-list__meta">60 min · 8–18 m</span>
+          <h3>Guided reef dive</h3>
+          <p>Explore the house reef with a certified instructor. Beginners welcome.</p>
+        </li>
+        <li class="reveal">
+          <span class="exp-list__meta">45 min · Surface</span>
+          <h3>Night snorkel</h3>
+          <p>Swim out after dark to see the reef glow with bioluminescence.</p>
+        </li>
+        <li class="reveal">
+          <span class="exp-list__meta">90 min · To 60 m</span>
+          <h3>Submarine voyage</h3>
+          <p>Travel past the drop-off in our three-seat submersible.</p>
+        </li>
+        <li class="reveal">
+          <span class="exp-list__meta">40 min · 24 m</span>
+          <h3>Reef lab visit</h3>
+          <p>Meet our resident marine biologist and see the coral nursery up close.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ============ JOURNEY ============ -->
+    <section class="journey" id="journey">
+      <div class="journey__intro">
+        <p class="eyebrow eyebrow--light">Arrival</p>
+        <h2 class="script section-title reveal">Your journey down.</h2>
+        <p class="reveal">You arrive by seaplane at our jetty, step into a glass lift, and descend through the water column to your suite. Every level of the resort sits at its own depth.</p>
+        <a href="#faq" class="link-arrow link-arrow--light">Getting here <span aria-hidden="true">→</span></a>
+      </div>
+
+      <ol class="descent">
+        <li style="--d: 0">
+          <span class="descent__depth">0 m</span>
+          <div><h3>Arrival jetty</h3><p>Seaplane landing and welcome drinks at the surface pavilion.</p></div>
+        </li>
+        <li style="--d: 6">
+          <span class="descent__depth">6 m</span>
+          <div><h3>Glass lift</h3><p>A slow, quiet descent with the reef rising around you.</p></div>
+        </li>
+        <li style="--d: 10">
+          <span class="descent__depth">10 m</span>
+          <div><h3>Lobby &amp; Tide Lounge</h3><p>Check in, then settle into the lounge beneath the light rays.</p></div>
+        </li>
+        <li style="--d: 18">
+          <span class="descent__depth">18 m</span>
+          <div><h3>Lumen restaurant</h3><p>The glass tunnel dining room, open every evening.</p></div>
+        </li>
+        <li style="--d: 24">
+          <span class="descent__depth">12–24 m</span>
+          <div><h3>Suites &amp; villas</h3><p>Eighteen rooms set into the reef wall, each with its own view.</p></div>
+        </li>
+        <li style="--d: 40">
+          <span class="descent__depth">40 m</span>
+          <div><h3>House reef &amp; dive centre</h3><p>Where the reef drops away into the open ocean.</p></div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============ DINING ============ -->
+    <section class="dining" id="dining">
+      <div class="dining__media reveal">
+        <picture>
+          <source srcset="assets/img/dining-table.webp" type="image/webp">
+          <img src="assets/img/dining-table.jpg" alt="Candlelit table set for dinner beside the glass, with fish swimming outside" loading="lazy" width="672" height="520">
+        </picture>
+      </div>
+      <div class="dining__text">
+        <p class="eyebrow">Dining at 18 m</p>
+        <h2 class="script section-title reveal">Dinner with the ocean.</h2>
+        <p class="reveal">Menus follow the local catch and the season. Every table looks out through the glass, and every evening is different.</p>
+
+        <ul class="venues">
+          <li>
+            <div><h3>Lumen</h3><p>Seven-course tasting menu</p></div>
+            <span>7 pm – 10 pm</span>
+          </li>
+          <li>
+            <div><h3>Tide Lounge</h3><p>Cocktails and small plates</p></div>
+            <span>4 pm – midnight</span>
+          </li>
+          <li>
+            <div><h3>In-suite dining</h3><p>Breakfast in bed beside the reef</p></div>
+            <span>Any time</span>
+          </li>
+        </ul>
+        <a href="#book" class="btn btn--copper">Plan your stay <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <!-- ============ REEF CARE ============ -->
+    <section class="reef" id="reef">
+      <div class="reef__media reveal">
+        <picture>
+          <source srcset="assets/img/reef-coral.webp" type="image/webp">
+          <img src="assets/img/reef-coral.jpg" alt="Coral formations lit warmly beside the resort" loading="lazy" width="712" height="341">
+        </picture>
+      </div>
+      <div class="reef__text">
+        <p class="eyebrow">Our world</p>
+        <h2 class="script section-title reveal">We live as guests of the reef.</h2>
+        <div class="pledges">
+          <div class="reveal">
+            <h3>Coral restoration</h3>
+            <p>Our nursery grows coral fragments that we replant on the house reef every month.</p>
+          </div>
+          <div class="reveal">
+            <h3>Powered by the sun</h3>
+            <p>Solar arrays on the surface pavilion supply the resort, and seawater cools every suite.</p>
+          </div>
+          <div class="reveal">
+            <h3>Reef-safe by default</h3>
+            <p>Only reef-safe sunscreen and toiletries, and no single-use plastic anywhere on site.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="faq" id="faq">
+      <div class="faq__head">
+        <p class="eyebrow">Before you go</p>
+        <h2 class="script section-title">Questions, answered.</h2>
+        <p>Can't find what you need? <a href="#contact" class="inline-link">Send us a message</a> and our reservations team will reply within a day.</p>
+      </div>
+      <div class="faq__list">
+        <details>
+          <summary>Do I need to swim or dive to stay here?</summary>
+          <p>No. You reach your suite by a dry glass lift, and every room is kept at surface pressure. Diving and snorkelling are optional.</p>
+        </details>
+        <details>
+          <summary>How do I get to SUBMERGE?</summary>
+          <p>We arrange a seaplane from the international airport to our arrival jetty. The flight takes about 40 minutes and is included in every stay.</p>
+        </details>
+        <details>
+          <summary>Is it safe to sleep underwater?</summary>
+          <p>The structure is monitored around the clock by our engineering team, and every suite has a direct line to the surface pavilion.</p>
+        </details>
+        <details>
+          <summary>Can children stay?</summary>
+          <p>Children aged 8 and over are welcome in the Cliffside Villa and the Manta Residence.</p>
+        </details>
+        <details>
+          <summary>What is included in the rate?</summary>
+          <p>Daily breakfast, seaplane transfers, a guided house-reef snorkel and access to the Tide Lounge.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="contact" id="contact">
+      <div class="contact__info">
+        <p class="eyebrow">Contact</p>
+        <h2 class="script section-title reveal">Talk to our team.</h2>
+        <p class="contact__lede reveal">Planning a stay, a celebration or a private event? Send us a note and our reservations team will reply within one day.</p>
+
+        <dl class="contact__details">
+          <div><dt>Reservations</dt><dd>reservations@submerge.com</dd></div>
+          <div><dt>Phone</dt><dd>+960 400 0000</dd></div>
+          <div><dt>Address</dt><dd>North Malé Atoll, Republic of Maldives</dd></div>
+          <div><dt>Hours</dt><dd>Every day, 8 am – 8 pm (GMT+5)</dd></div>
+        </dl>
+      </div>
+
+      <form class="contact__form reveal" id="contactForm" novalidate data-endpoint="">
+        <div class="contact__form-fields" id="contactFields">
+          <div class="field">
+            <label for="cFirst">First name</label>
+            <input type="text" id="cFirst" name="first_name" autocomplete="given-name" required>
+            <span class="field__error">Please enter your first name.</span>
+          </div>
+          <div class="field">
+            <label for="cLast">Last name</label>
+            <input type="text" id="cLast" name="last_name" autocomplete="family-name" required>
+            <span class="field__error">Please enter your last name.</span>
+          </div>
+          <div class="field">
+            <label for="cEmail">Email</label>
+            <input type="email" id="cEmail" name="email" autocomplete="email" required>
+            <span class="field__error">Please enter a valid email address.</span>
+          </div>
+          <div class="field">
+            <label for="cPhone">Phone <span class="field__opt">(optional)</span></label>
+            <input type="tel" id="cPhone" name="phone" autocomplete="tel">
+          </div>
+          <div class="field">
+            <label for="cTopic">I'm enquiring about</label>
+            <div class="field__select">
+              <select id="cTopic" name="topic" required>
+                <option value="" selected disabled>Choose a topic</option>
+                <option>A stay</option>
+                <option>A celebration or honeymoon</option>
+                <option>Private events &amp; weddings</option>
+                <option>Dining reservations</option>
+                <option>Diving &amp; experiences</option>
+                <option>Press &amp; partnerships</option>
+                <option>Something else</option>
+              </select>
+            </div>
+            <span class="field__error">Please choose a topic.</span>
+          </div>
+          <div class="field">
+            <label for="cDate">Planned arrival <span class="field__opt">(optional)</span></label>
+            <input type="date" id="cDate" name="arrival">
+          </div>
+          <div class="field field--full">
+            <label for="cMessage">Message</label>
+            <textarea id="cMessage" name="message" rows="5" required placeholder="Tell us about your plans"></textarea>
+            <span class="field__error">Please write a short message.</span>
+          </div>
+          <label class="check field--full">
+            <input type="checkbox" id="cConsent" name="consent" required>
+            <span>I agree to SUBMERGE contacting me about this enquiry.</span>
+          </label>
+          <span class="field__error field--full" id="consentError">Please tick the box so we can reply.</span>
+          <div class="contact__actions field--full">
+            <button type="submit" class="btn btn--copper" id="contactSubmit">Send enquiry <span class="arrow" aria-hidden="true">→</span></button>
+          </div>
+        </div>
+
+        <div class="contact__done" id="contactDone" hidden tabindex="-1">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22"/><path d="M14 25l7 7 13-15"/></svg>
+          <h3 id="contactDoneTitle">Thank you.</h3>
+          <p>We've received your enquiry and will reply to <strong id="contactDoneEmail"></strong> within one day.</p>
+          <button type="button" class="link-arrow" id="contactAgain">Send another message <span aria-hidden="true">→</span></button>
+        </div>
+        <p class="contact__status" id="contactStatus" role="status" aria-live="polite"></p>
+      </form>
     </section>
 
     <!-- ============ CTA ============ -->
@@ -172,9 +488,55 @@
     </section>
   </main>
 
+  <!-- ============ FOOTER ============ -->
   <footer class="footer">
-    <span class="nav__logo">SUBMERGE</span>
-    <span>© <span id="year"></span> Submerge. All rights reserved.</span>
+    <svg class="footer__wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 48 C 180 10, 360 10, 540 40 S 900 78, 1080 44 S 1340 6, 1440 30 L1440 80 L0 80 Z"/>
+    </svg>
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <a href="#top" class="nav__logo">SUBMERGE</a>
+        <p>An underwater resort set into a living reef in the Indian Ocean.</p>
+        <form class="newsletter" id="newsletter" novalidate>
+          <label for="newsEmail">Stories from below, a few times a year</label>
+          <div class="newsletter__row">
+            <input type="email" id="newsEmail" name="email" placeholder="Your email address" autocomplete="email" required>
+            <button type="submit" aria-label="Subscribe">→</button>
+          </div>
+          <p class="newsletter__msg" id="newsMsg" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <nav class="footer__col" aria-label="Stay">
+        <h4>Stay</h4>
+        <a href="#suites">Suites &amp; villas</a>
+        <a href="#book">Check availability</a>
+        <a href="#faq">What's included</a>
+      </nav>
+      <nav class="footer__col" aria-label="Discover">
+        <h4>Discover</h4>
+        <a href="#experiences">Experiences</a>
+        <a href="#dining">Dining</a>
+        <a href="#journey">Your journey down</a>
+        <a href="#reef">Reef care</a>
+      </nav>
+      <div class="footer__col">
+        <h4>Contact</h4>
+        <p>North Malé Atoll<br>Republic of Maldives</p>
+        <p>reservations@submerge.com<br>+960 400 0000</p>
+        <a href="#contact">Send us a message →</a>
+      </div>
+    </div>
+
+    <div class="footer__bar">
+      <span>© <span id="year"></span> Submerge. All rights reserved.</span>
+      <div class="footer__social">
+        <a href="#top">Instagram</a>
+        <a href="#top">Facebook</a>
+        <a href="#top">Privacy</a>
+        <a href="#top">Terms</a>
+      </div>
+    </div>
   </footer>
 
   <script src="script.js"></script>

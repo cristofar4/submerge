@@ -9,16 +9,27 @@
     nav.classList.toggle('is-open', open);
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    document.body.style.overflow = open ? 'hidden' : '';
   };
   toggle.addEventListener('click', () => setMenu(!nav.classList.contains('is-open')));
   $('#navLinks').addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+  document.addEventListener('click', (e) => { if (!nav.contains(e.target)) setMenu(false); });
+
+  /* ---------- highlight the nav link for the section in view ---------- */
+  const navAnchors = [...document.querySelectorAll('.nav__links a[href^="#"]:not(.nav__mobile-cta)')];
+  const sections = [...document.querySelectorAll('main > section[id]')];
+  if ('IntersectionObserver' in window) {
+    const sio = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        navAnchors.forEach((a) => a.classList.toggle('is-active', a.getAttribute('href') === '#' + en.target.id));
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach((s) => sio.observe(s));
+  }
 
   /* ---------- depth gauge follows scroll ---------- */
   const marker = $('#gaugeMarker');
-  const readout = $('#gaugeReadout');
-  const MAX_DEPTH = 40;
   let ticking = false;
   const onScroll = () => {
     const y = window.scrollY;
@@ -26,7 +37,6 @@
     const max = document.documentElement.scrollHeight - window.innerHeight;
     const p = max > 0 ? Math.min(1, Math.max(0, y / max)) : 0;
     marker.style.top = (p * 100) + '%';
-    readout.textContent = Math.round(p * MAX_DEPTH) + ' m';
     ticking = false;
   };
   window.addEventListener('scroll', () => {
@@ -120,6 +130,91 @@
     const nights = Math.round((new Date(departure.value) - new Date(arrival.value)) / 86400000);
     const fmt = (v) => new Date(v + 'T00:00:00').toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' });
     show(`Suites are available ${fmt(arrival.value)} – ${fmt(departure.value)} · ${nights} night${nights > 1 ? 's' : ''}, ${guests.value} guest${guests.value > 1 ? 's' : ''}. Our concierge will be in touch.`);
+  });
+
+  /* ---------- newsletter ---------- */
+  const news = $('#newsletter');
+  const newsEmail = $('#newsEmail');
+  const newsMsg = $('#newsMsg');
+  news.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(newsEmail.value.trim());
+    newsMsg.classList.toggle('is-error', !ok);
+    newsMsg.textContent = ok ? 'Thank you. You are on the list.' : 'Please enter a valid email address.';
+    if (ok) news.reset();
+  });
+
+  /* ---------- contact form ---------- */
+  // Set data-endpoint on the form (e.g. a Formspree or your own API URL) to deliver enquiries.
+  const contact = $('#contactForm');
+  const fields = $('#contactFields');
+  const done = $('#contactDone');
+  const status = $('#contactStatus');
+  const submitBtn = $('#contactSubmit');
+  const consent = $('#cConsent');
+  const consentError = $('#consentError');
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  $('#cDate').min = iso(today);
+
+  const checks = {
+    cFirst: (v) => v.trim().length > 0,
+    cLast: (v) => v.trim().length > 0,
+    cEmail: (v) => emailRe.test(v.trim()),
+    cTopic: (v) => v !== '',
+    cMessage: (v) => v.trim().length > 1,
+  };
+  const validate = (id) => {
+    const el = document.getElementById(id);
+    const ok = checks[id](el.value);
+    el.closest('.field').classList.toggle('is-invalid', !ok);
+    el.setAttribute('aria-invalid', String(!ok));
+    return ok;
+  };
+  Object.keys(checks).forEach((id) => {
+    const el = document.getElementById(id);
+    const evt = el.tagName === 'SELECT' ? 'change' : 'input';
+    el.addEventListener(evt, () => { if (el.closest('.field').classList.contains('is-invalid')) validate(id); });
+  });
+  consent.addEventListener('change', () => consentError.classList.toggle('is-shown', !consent.checked));
+
+  contact.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    status.textContent = '';
+    const results = Object.keys(checks).map(validate);
+    consentError.classList.toggle('is-shown', !consent.checked);
+    if (results.includes(false) || !consent.checked) {
+      const firstBad = contact.querySelector('[aria-invalid="true"]') || consent;
+      firstBad.focus();
+      return;
+    }
+
+    const endpoint = contact.dataset.endpoint;
+    if (endpoint) {
+      submitBtn.disabled = true;
+      try {
+        const res = await fetch(endpoint, { method: 'POST', body: new FormData(contact), headers: { Accept: 'application/json' } });
+        if (!res.ok) throw new Error(res.status);
+      } catch (_) {
+        status.textContent = "We couldn't send your message. Please try again, or email reservations@submerge.com.";
+        submitBtn.disabled = false;
+        return;
+      }
+      submitBtn.disabled = false;
+    }
+
+    $('#contactDoneTitle').textContent = `Thank you, ${$('#cFirst').value.trim()}.`;
+    $('#contactDoneEmail').textContent = $('#cEmail').value.trim();
+    fields.hidden = true;
+    done.hidden = false;
+    done.focus();
+  });
+
+  $('#contactAgain').addEventListener('click', () => {
+    contact.reset();
+    contact.querySelectorAll('.is-invalid').forEach((f) => f.classList.remove('is-invalid'));
+    done.hidden = true;
+    fields.hidden = false;
+    $('#cFirst').focus();
   });
 
   $('#year').textContent = new Date().getFullYear();
