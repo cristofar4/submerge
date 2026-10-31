@@ -132,6 +132,48 @@
     show(`Suites are available ${fmt(arrival.value)} – ${fmt(departure.value)} · ${nights} night${nights > 1 ? 's' : ''}, ${guests.value} guest${guests.value > 1 ? 's' : ''}. Our concierge will be in touch.`);
   });
 
+  /* ---------- parallax: photos drift inside their frames ---------- */
+  const plxImgs = [...document.querySelectorAll('.window__main img, .window__secondary img, .card__img img, .suite__img img, .dining__media img, .reef__media img')];
+  if (!reduceMotion && plxImgs.length) {
+    let plxQueued = false;
+    const plx = () => {
+      plxQueued = false;
+      const vh = window.innerHeight;
+      plxImgs.forEach((img) => {
+        const r = img.parentElement.getBoundingClientRect();
+        if (r.bottom < -100 || r.top > vh + 100) return;
+        const prog = (r.top + r.height / 2 - vh / 2) / (vh / 2 + r.height / 2); // -1 .. 1
+        img.style.setProperty('--py', (-prog * r.height * 0.045).toFixed(1) + 'px');
+      });
+    };
+    const queue = () => { if (!plxQueued) { plxQueued = true; requestAnimationFrame(plx); } };
+    window.addEventListener('scroll', queue, { passive: true });
+    window.addEventListener('resize', queue);
+    plx();
+  }
+
+  /* ---------- count-up figures ---------- */
+  const counters = document.querySelectorAll('.count');
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    const cio = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        cio.unobserve(en.target);
+        const el = en.target;
+        const to = +el.dataset.to;
+        const t0 = performance.now();
+        const dur = 1600;
+        const tick = (t) => {
+          const k = Math.min(1, (t - t0) / dur);
+          el.textContent = Math.round(to * (1 - Math.pow(1 - k, 3)));
+          if (k < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+    }, { threshold: 0.6 });
+    counters.forEach((el) => cio.observe(el));
+  }
+
   /* ---------- newsletter ---------- */
   const news = $('#newsletter');
   const newsEmail = $('#newsEmail');

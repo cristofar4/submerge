@@ -123,6 +123,12 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 }
 .hero__media { position: absolute; inset: 0; z-index: -1; background: var(--navy-800) url("assets/img/hero-poster.jpg") center/cover; }
 .hero__video { width: 100%; height: 100% !important; object-fit: cover; object-position: 62% 50%; }
+.hero__gl {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  opacity: 0; transition: opacity 1s var(--ease);
+  pointer-events: none;
+}
+.hero.has-water .hero__gl { opacity: 1; }
 .hero__shade {
   position: absolute; inset: 0;
   background:
@@ -301,8 +307,14 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 .caption--light { color: rgba(255,255,255,.82); }
 
 /* image hover zoom */
-.window__main img, .window__secondary img, .card__img img { transition: transform 1.4s var(--ease); }
-.window__main:hover img, .window__secondary:hover img, .card:hover .card__img img { transform: scale(1.04); }
+.window__main img, .window__secondary img, .card__img img, .suite__img img, .dining__media img, .reef__media img {
+  scale: 1.1;
+  translate: 0 var(--py, 0px);
+  transition: scale 1.4s var(--ease);
+  will-change: translate;
+}
+.window__main:hover img, .window__secondary:hover img, .card:hover .card__img img,
+.suite:hover .suite__img img, .dining__media:hover img, .reef__media:hover img { scale: 1.14; }
 .window__secondary picture, .card__img { display: block; overflow: hidden; }
 
 /* ---------- deeper ---------- */
@@ -383,8 +395,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 }
 .suite__img { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
 .suite__img picture { display: block; height: 100%; }
-.suite__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s var(--ease); }
-.suite:hover .suite__img img { transform: scale(1.05); }
+.suite__img img { width: 100%; height: 100%; object-fit: cover; }
 .suite__depth {
   position: absolute; top: 16px; left: 16px;
   padding: 7px 13px; border-radius: 999px;
@@ -739,4 +750,5 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .reveal, .reveal-line { opacity: 1; transform: none; filter: none; }
   .hero__particles { display: none; }
+  .window__main img, .window__secondary img, .card__img img, .suite__img img, .dining__media img, .reef__media img { scale: 1; translate: none; }
 }

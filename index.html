@@ -40,6 +40,7 @@
           <source src="assets/video/hero-960.mp4" type="video/mp4" media="(max-width: 760px)">
           <source src="assets/video/hero.mp4" type="video/mp4">
         </video>
+        <canvas class="hero__gl" id="heroGl" aria-hidden="true"></canvas>
         <div class="hero__shade"></div>
         <div class="hero__particles" aria-hidden="true"></div>
       </div>
@@ -125,10 +126,10 @@
     <!-- facts -->
     <section class="facts" aria-label="Submerge at a glance">
       <dl class="facts__list">
-        <div><dt>18</dt><dd>Underwater suites &amp; villas</dd></div>
-        <div><dt>24<small>m</small></dt><dd>Below the surface at the deepest suite</dd></div>
-        <div><dt>270<small>°</small></dt><dd>Acrylic windows onto the reef</dd></div>
-        <div><dt>1</dt><dd>Private house reef, yours to explore</dd></div>
+        <div><dt><span class="count" data-to="18">18</span></dt><dd>Underwater suites &amp; villas</dd></div>
+        <div><dt><span class="count" data-to="24">24</span><small>m</small></dt><dd>Below the surface at the deepest suite</dd></div>
+        <div><dt><span class="count" data-to="270">270</span><small>°</small></dt><dd>Acrylic windows onto the reef</dd></div>
+        <div><dt><span class="count" data-to="1">1</span></dt><dd>Private house reef, yours to explore</dd></div>
       </dl>
     </section>
 
@@ -536,5 +537,6 @@
   </footer>
 
   <script src="script.js"></script>
+  <script src="water.js"></script>
 </body>
 </html>
